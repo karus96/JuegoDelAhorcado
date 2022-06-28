@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html onkeydown="onKeyDownHandler(event);">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Juego del ahorcado</title>
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<main>
+    <img src="IMG/Logo.png" id="img-aluraLogo">
+    <div id="div-zonaDeJuego">
+        <div id="div-ahorcado">
+                   
+        </div>
+        <div id="div-letras"></div>        
+    </div>    
+    <br>
+    <div id="div-btn">
+        <button id="btn-primario" onclick="ComenzarJuego()"><label id="txt-btn-primario">Iniciar Juego</label></button>
+    </div>
+    
+</main>
+<footer id="autor">
+    <p>Autor: Ricardo Apuy Muñoz<br>
+        Email:<a href="mailto:ricardo96apuy@gmail.com">ricardo96apuy@gmail.com</a>
+    </p>
+</footer>
+<script src="JS/funciones.js"></script>
+</html>

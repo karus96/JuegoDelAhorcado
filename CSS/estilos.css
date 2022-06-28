@@ -1,0 +1,106 @@
+.txt-Correcto{    
+    width: 80px;
+    height: 72px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 150%;    
+    text-align: center;    
+}
+#div-contenedor{
+    float: left;
+    margin: 15px;
+}
+.txt-GameOver{    
+    /*width: 80px;*/
+    /*height: 72px;*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 150%;    
+    text-align: center;    
+}
+#txt-InCorrecto{
+    width: 14px;
+    height: 36px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    text-align: center;
+    color: #495057;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+#div-linea {   
+    width: 80px;
+    height: 4px;
+    background: #0A3871;
+    border-radius: 8px;
+}
+#btn-primario{
+    margin: 10px;    
+    width: 269px;
+    height: 66px;
+    left: 561px;
+    top: 402px;
+    background: #0A3871;
+    border-radius: 24px;
+}
+#txt-btn-primario{
+   
+   
+    width: 269px;
+    height: 66px;
+    font-family: 'Inter';
+       
+    font-size: 18px;        
+    color: #FFFFFF;
+    
+}
+#btn-desisitir{
+    margin: 10px;
+    width: 269px;
+    height: 66px;
+    border: 1px solid #0A3871;
+    border-radius: 24px;
+
+}
+#txt-btn-desistir{
+    /* Button */
+
+
+    width: 284px;
+    height: 19px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    color: #0A3871;
+    }
+#div-zonaDeJuego{
+    margin: auto;
+    width: 50%;
+    
+}
+#div-letras{
+    padding-bottom: 5em;
+}
+#txt-incorrecto{
+    padding-top: 10em;
+}
+#div-btn{
+    margin: auto;
+    width: 50%;
+}
+#img-aluraLogo{
+    margin: 25px;
+}
