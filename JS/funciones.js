@@ -16,10 +16,66 @@ var y= 100;
 var colorHorca = "blue";
 var colorJugador = "black";
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+var visor = document.getElementById("div-cronometro");
+//variables de inicio:
+class Reloj {
+  constructor(munutos, segundos) {
+    this.minutos = munutos;
+    this.segundos = segundos;
+    }  
+  }
+
+var tiempoLimite= new Reloj(0,30); ;
+var contador=0;
+var jugadores = [];
+var nombreDeJugadores =document.getElementById("jugadores_Nombres_listaJugadores");
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+elcrono=setInterval(Cronometro,1000);
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function AgregarJugador(){
+  jugadores.push(document.getElementsByClassName("jugadores_agregarJugador_input")[0].value);
+  nombreDeJugadores.innerHTML="";
+  jugadores.forEach(element => {
+    nombreDeJugadores.innerHTML+="<li>"+element+"</li>"
+  });
+}  
+
+function Cronometro() { 
+  if(_elJuegoComenzo){
+      contador--;
+      sg = tiempoLimite.segundos+contador;
+      mn = tiempoLimite.minutos;
+      if(sg==0){
+        contador=0;
+        tiempoLimite.segundos=60;
+        tiempoLimite.minutos--;   
+      }
+      if(tiempoLimite.minutos < 0){
+        console.log("termino");
+        contador=0;
+        tiempoLimite.segundos=0;      
+        sg=0;
+        mn=0;
+        for (let index = 0; index <8; index++) {
+          _conteo=index;
+          PreparaParaMatar();
+          
+        }
+      }
+    if (sg<10) { sg= "0" + sg;} 
+    if (mn<10) { mn= "0" + mn;} 
+    visor.innerHTML=mn+":"+sg;  
+  }
+ }
 
 function ComenzarJuego(){    
     EscogerPalabraAleatoria();
     PrepararPantalla();
+    visor.innerHTML="0"+tiempoLimite.minutos+":"+tiempoLimite.segundos;
+    tiempoLimite = new Reloj(0,30);     
+    
 }
 function PrepararPantalla(){
   var contenedorBTN = document.getElementById("div-btn");  
@@ -40,7 +96,7 @@ function RegresarAlInicio(){
   "<button id='btn-primario' onclick= 'PrepararPantalla()'><label id='txt-btn-primario'>Iniciar Juego</label></button>";
   var contenedorBTN = document.getElementById("div-letras");  
   contenedorBTN.innerHTML='';
-  _elJuegoComenzo=false;
+  _elJuegoComenzo=false;  
 }
 
 function EscogerPalabraAleatoria(){
@@ -116,7 +172,7 @@ function onKeyDownHandler(event) {
   } 
   function MensajeHasMuerto(){
     var contenedorMensjae = document.getElementById("div-mensaje");  
-    contenedorMensjae.innerHTML +="Has Muerto!";
+    contenedorMensjae.innerHTML ="Has Muerto!";
     contenedorMensjae.style.color="red";
   } 
   function PreparaParaMatar(){    

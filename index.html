@@ -4,19 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Juego del ahorcado</title>
-    <link rel="stylesheet" href="CSS/reset.css">
+    
     <link rel="stylesheet" href="CSS/estilos.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 </head>
-<main>
-    <img src="IMG/Logo.png" id="img-aluraLogo">
-    <div id="div-zonaDeJuego">
-        <div id="div-ahorcado">
-                   
+<main>   
+    <div  class="contenedor">
+        <div class="jugadores">
+            <h3 class="jugadores_titulo"> Jugadores</h3>       
+            <div class="jugadores_agregarJugador">            
+                <label for="jugadores_agregarJugador_titulo">Nombre del jugador</label>
+                <input class="jugadores_agregarJugador_input" type="text">
+                <button class="jugadores_agregarJugador_btn" onclick="AgregarJugador()">Agregar</button>    
+            </div>    
+            <div class="jugadores_Nombres">
+                <div>
+                  <ol id="jugadores_Nombres_listaJugadores">               
+                  </ol>
+                </div>
+            </div>
         </div>
-        <div id="div-letras"></div>        
+        <div id="div-zonaDeJuego">
+            <img src="IMG/Logo.png" id="img-aluraLogo">
+            <div id="div-cronometro">00:00</div>
+            <div id="div-ahorcado">                   
+            </div>
+            <div id="div-letras"></div>        
+        </div>        
     </div>    
-    <br>
     <div id="div-btn">
         <button id="btn-primario" onclick="ComenzarJuego()"><label id="txt-btn-primario">Iniciar Juego</label></button>
     </div>
