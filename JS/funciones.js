@@ -1,6 +1,6 @@
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Variables
-var _palabrasDelJuego= ["HOLA", "JUEGO", "ADIOS", "DRAGON", "AMOR", "APUY"];
+var _palabrasDelJuego= ["Izquierda", "precio", "ingreso", "ineficaz", "incremento"];
 var _palabraSecreta;
 var _letrasUsadas= [];
 var _letrasCorrectas= [];
@@ -60,8 +60,7 @@ function Cronometro() {
         mn=0;
         for (let index = 0; index <8; index++) {
           _conteo=index;
-          PreparaParaMatar();
-          
+          PreparaParaMatar();          
         }
       }
     if (sg<10) { sg= "0" + sg;} 
@@ -107,7 +106,7 @@ function EscogerPalabraAleatoria(){
     console.log("//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     console.log("El juego comienza");
     console.log("La palabra secreta ha sido escogida");    
-    _palabraSecreta = _palabrasDelJuego[posicion];
+    _palabraSecreta = _palabrasDelJuego[posicion].toUpperCase();
     console.log("La palabra secreta es "+_palabraSecreta );
     _elJuegoComenzo=true;      
     CrearCamposParaLaPalabraSecreta();
@@ -123,20 +122,24 @@ function onKeyDownHandler(event) {
     //Para que funcione en todos los navegadores
     var codigo = event.which || event.keyCode;
     if(codigo >= 65 && codigo <= 90 && _elJuegoComenzo){      
-      var letra  = String.fromCharCode(codigo);             
+      var letra  = String.fromCharCode(codigo);       
+      
       var existe= _letrasUsadas.find(element => element == letra);            
       if(existe == undefined){
         //Agremgamos letra usada
         _letrasUsadas.push(letra);
         //revisamos si es de la palabra secreta;
-        existe = _palabraSecreta.search(letra);
-          if(existe != -1){
-            DibujarLetraCorrecta(letra,existe)
-            _letrasCorrectas.push(letra);
-            if(_letrasCorrectas.length==_palabraSecreta.length){
-              MensajeHasGanado();
-              _elJuegoComenzo=false;
+        indexs = EncontrarLetra(_palabraSecreta,letra);        
+          if(indexs.length > 0){
+            for (let index = 0; index < indexs.length; index++) {            
+              DibujarLetraCorrecta(letra,indexs[index])
+              _letrasCorrectas.push(letra);
+              if(_letrasCorrectas.length==_palabraSecreta.length){
+                MensajeHasGanado();
+                _elJuegoComenzo=false;
+              }
             }
+           
           }else{
             DibujarLetraIncorrecta(letra); 
             _conteo++;
@@ -144,6 +147,14 @@ function onKeyDownHandler(event) {
           }   
       }      
     }
+  }
+  function EncontrarLetra(palabra, letra){
+    indexs = [];  
+    for (let index = 0; index < palabra.length; index++) {
+       if(letra == palabra[index]) 
+          indexs.push(index);
+      }
+      return indexs;
   }
   function DibujarLetraCorrecta(letra, index){
     console.log("Letra correcta");
